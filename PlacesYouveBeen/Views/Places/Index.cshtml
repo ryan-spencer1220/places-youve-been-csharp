@@ -6,12 +6,21 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
   </head>
   <body>
+    @using PlacesYouveBeen.Models;
     <h1>Place List: </h1>
+      @if (Model.Count == 0)
+      {
+        <p>You havent been to any places! </p>
+      }
       <ul>
-        <li>
-        test
-        </li>
+      @foreach (Place place in Model)
+      {
+        <li><a href='/places/@place.Id'>@place.City</a></li>
+      }      
       </ul>
     <a href='/places/new'>Add another places</a>
+  <form action='/places/delete' method="post">
+  <button type="submit"> Delete All</button>
+  </form>
   </body>
 </html>

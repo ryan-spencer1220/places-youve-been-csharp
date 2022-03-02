@@ -34,8 +34,13 @@ namespace PlacesYouveBeen.Tests
       string result =newPlace.City ;
 
       Assert.AreEqual(updatedCity, result);
-
-
+    }
+    [TestMethod]
+    public void GetAll_ReturnsEmptyList_PlaceList()
+    {
+      List<Place> newPlace = new List<Place> { };
+      List<Place> result = Place.GetAll();
+      CollectionAssert.AreEqual(newPlace, result);
     }
   }
 }

@@ -14,9 +14,9 @@ namespace PlacesYouveBeen.Controllers
     }
     
     [HttpPost("/places")]
-    public ActionResult Create(string cityName)
+    public ActionResult Create(string cityName,string stateName,string countryName,string duration)
     {
-      Place newPlace = new Place(cityName);
+      Place newPlace = new Place(cityName,stateName,countryName,duration);
       return RedirectToAction("Index");
     }
     
@@ -38,6 +38,14 @@ namespace PlacesYouveBeen.Controllers
     public ActionResult DeleteAll()
     {
       Place.ClearAll();
+      return View();
+    }
+
+
+    [HttpPost("/places/delete/{id}")]
+    public ActionResult Delete(int id)
+    {
+      Place.DeleteOne(id);
       return View();
     }
   }
